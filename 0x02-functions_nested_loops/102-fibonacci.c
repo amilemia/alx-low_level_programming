@@ -3,12 +3,13 @@
 /**
  * main - Prints first 50 Fibonacci numbers.
  *
- * Return: 0.
+ * Return: Always 0.
  */
 int main(void)
 {
 	int inc;
 	unsigned long fib1 = 0, fib2 = 1, sum;
+	
 	for (inc = 0; inc < 50; inc++)
 	{
 	sum = fib1 + fib2;
