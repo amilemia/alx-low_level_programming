@@ -13,11 +13,11 @@ int main(void)
 	char str[50];
 	int i, randN = 0, s = 0;
 
-	srandN(time(0));
+	srand(time(0));
 
 	for (i = 0; s <= (2772 - 128); i++)
 	{
-		randN = (randN() % 25) + 65;
+		randN = (rand() % 25) + 65;
 
 		str[i] = randN;
 		s = s + randN;
