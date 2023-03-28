@@ -5,7 +5,7 @@
  * @s: The string
  */
 
-void rev_string(char*s)
+void rev_string(char *s)
 {
 	int i, len = 0;
 	char swap;
