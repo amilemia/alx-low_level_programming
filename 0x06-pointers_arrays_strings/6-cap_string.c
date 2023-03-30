@@ -13,30 +13,17 @@ char *cap_string(char *str)
 
 	while (*ptr != '\0')
 	{
-		switch (*ptr)
+		if (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' ||
+				*ptr == ',' || *ptr == ';' || *ptr == '.' ||
+				*ptr == '!' || *ptr == '?' || *ptr == '"' ||
+				*ptr == '(' || *ptr == ')' || *ptr == '{' ||
+				*ptr == '}')
 		{
-			case ' ':
-			case '\t':
-			case '\n':
-			case ',':
-			case ';':
-			case '.':
-			case '!':
-			case '?':
-			case '"':
-			case '(':
-			case ')':
-			case '{':
-			case '}':
-				capitalize_next = 1;
-				break;
-			default:
-
-				if (*ptr >= 'a' && *ptr <= 'z' && capitalize_next)
-				{
-					*ptr = *ptr - 'a' + 'A';
-					capitalize_next = 0;
-				}
+			capitalize_next = 1;
+		} else if (*ptr >= 'a' && *ptr <= 'z' && capitalize_next)
+		{
+			*ptr -= 32;
+			capitalize_next = 0;
 		}
 		ptr++;
 	}
