@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * _strch - Locates a character in a string
+ * _strchr - Locates a character in a string
  * @s: String to search
  * @c: Character to find
  *
  * Return: Always 0 (Succ)
  */
 
-char *_strch(char *s, char c)
+char *_strchr(char *s, char c)
 {
 	int i;
 
