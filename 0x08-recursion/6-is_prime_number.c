@@ -9,12 +9,12 @@
 
 int is_prime_number(int n)
 {
-	if (n <= 1)
-		return (0);
-
 	int i;
 
 	i = 2;
+
+	if (n <= 1)
+		return (0);
 
 	while (i * i <= n)
 	{
