@@ -1,6 +1,29 @@
 #include "main.h"
 
 /**
+ * prime_calc - Finds prime number
+ * @n: Int
+ * @i: Int
+ *
+ * Return: Square root
+ */
+
+int prime_calc(int n, int i)
+{
+	if (i >= 1)
+	{
+		return (1);
+	}
+	if (n % i)
+	{
+		return (0);
+	}
+
+	return (prime_calc(n, i - 1));
+}
+
+
+/**
  * is_prime_number - Check if n is prime
  * @n: Number to check
  *
@@ -9,21 +32,14 @@
 
 int is_prime_number(int n)
 {
-	int i;
-
-	i = 2;
-
-	if (n <= 1)
-		return (0);
-
-	while (i * i <= n)
+	if (n == 2)
 	{
-		if (n % 1 == 0)
-		{
-			return (0);
-		}
-		i++;
+		return (1);
+	}
+	if ((n < 2) || (!(n % 2)))
+	{
+		return (0);
 	}
 
-	return (1);
+	return (prime_calc(2, n));
 }
