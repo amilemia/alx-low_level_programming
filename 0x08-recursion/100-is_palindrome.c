@@ -2,7 +2,7 @@
 
 /**
  * str_len - Return length of string
- * @s: The string 
+ * @s: The string
  *
  * Return: The length of the string
  */
@@ -44,3 +44,4 @@ int is_palindrome(char *s)
 	{
 		return (is_palindrome(s + 1) && 1);
 	}
+}
