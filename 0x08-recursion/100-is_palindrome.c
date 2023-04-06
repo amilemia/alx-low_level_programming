@@ -30,15 +30,16 @@ int str_len(char *s)
 
 int checkPal(char *s, int start, int end)
 {
-	if (start >= end)
+	while (start < end)
 	{
-		return (1);
+		if (s[start] != s[end])
+		{
+			return (0);
+		}
+		start++;
+		end--;
 	}
-	if (s[start] != s[end])
-	{
-		return (0);
-	}
-	return (checkPal(s, start + 1, end - 1));
+	return (1);
 }
 
 /**
