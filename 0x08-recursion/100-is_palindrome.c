@@ -24,7 +24,7 @@ int str_len(char *s)
  * @s: The string to check
  * @start: Starting index of string
  * @end: Ending index of string
- * 
+ *
  * Return: 1 if palindrome, 0 otherwise
 */
 
