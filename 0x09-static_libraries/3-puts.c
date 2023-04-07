@@ -1,22 +1,20 @@
 #include "main.h"
 
 /**
- * _puts - writes a string to stdout
+ * _puts - print a string to stdout
+ * @str: char array string type
+ * Description: Can only use _putchar
  *
- * @str: pointer to the string to be written
- *
- * Return: none
+ * Return: Nothing
  */
 
 void _puts(char *str)
 {
-  int i = 0;
+	int i;
 
-  while (str[i] != '\0')
-  {
-    _putchar(str[i]);
-    i++;
-  }
-
-  _putchar('\n');
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
+	_putchar('\n');
 }
