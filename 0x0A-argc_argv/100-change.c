@@ -32,16 +32,16 @@ int main(int argc, char *argv[])
 	coins = count_coins(cents);
 
 	printf("%d\n", coins);
-	
+
 	return (0);
 }
 
 /**
  * count_coins - Count the minimum number of coin to make
  * change for a given coin value
- * 
+ *
  * @cents: The amount of money to make change for
- * 
+ *
  * Return: The minimum number of coins needed
 */
 
