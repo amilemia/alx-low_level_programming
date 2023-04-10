@@ -8,7 +8,7 @@
  * @argc: The number of arguments passed to the program
  * @argv: An array of pointers to the arguments
  *
- * Return: 0 on succ, 1 on error
+ * Return: 0 on success, 1 on error
  */
 
 int main (int argc, char *argv[])
@@ -25,7 +25,7 @@ int main (int argc, char *argv[])
 	{
 		for (j = 0; argv[i][j]; j++)
 		{
-			if (!isdigit(argv[i][j]))
+			if (!(isdigit(argv[i][j])))
 			{
 				printf("Error\n");
 				return (1);
