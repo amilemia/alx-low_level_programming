@@ -11,21 +11,21 @@
  * Return: 0 on succ, 1 on error
  */
 
-int main(int argc, char *argv[])
+int main (int argc, char *argv[])
 {
 	int num, result = 0, i, j;
 
 	if (argc == 1)
 	{
 		printf("0\n");
-		return (1);
+		return (0);
 	}
 
 	for (i = 1; i < argc; i++)
 	{
 		for (j = 0; argv[i][j]; j++)
 		{
-			if (!(isdigit(argv[i][j])))
+			if (!isdigit(argv[i][j]))
 			{
 				printf("Error\n");
 				return (1);
