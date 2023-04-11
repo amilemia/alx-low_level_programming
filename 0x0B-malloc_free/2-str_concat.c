@@ -34,13 +34,14 @@ unsigned int str_len(char *s)
 
 char *str_copy(char *src)
 {
+	unsigned int i;
 	unsigned int len = str_len(src);
 	char *dest = malloc(sizeof(char) * (len + 1));
 
 	if (dest == NULL)
 		return (NULL);
 
-	for (unsigned int i = 0; i <= len; i++)
+	for (i = 0; i <= len; i++)
 		dest[i] = src[i];
 
 	return (dest);
