@@ -2,18 +2,14 @@
 #include <stdlib.h>
 
 /**
- * word_count - Count number of words in a string
- * @str: Pointer to string
+ * word_count - Counts the number of words in a string
+ * @str: Pointer to the string
  *
- * Return: Integer
+ * Return: The number of words in the string
  */
-
 int word_count(char *str)
 {
-	int word, i, j;
-
-	word = 0;
-	j = 0;
+	int word = 0, i, j;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -29,12 +25,11 @@ int word_count(char *str)
 }
 
 /**
- * strtow - Split string into words
- * @str: Pointer to string
+ * strtow - Splits a string into words
+ * @str: Pointer to the string
  *
- * Return: Pointer to array of strings, NULL on failure
+ * Return: Pointer to an array of strings, NULL on failure
  */
-
 char **strtow(char *str)
 {
 	char **matrix, *tmp;
@@ -67,8 +62,7 @@ char **strtow(char *str)
 				while (start < end)
 					*tmp++ = str[start++];
 				*tmp = '\0';
-				matrix[k] = tmp - c;
-				k++;
+				matrix[k++] = tmp - c;
 				c = 0;
 			}
 		}
@@ -76,6 +70,12 @@ char **strtow(char *str)
 			start = i;
 	}
 	matrix[k] = NULL;
+
+	if (k == 0)
+	{
+		free(matrix);
+		return (NULL);
+	}
 
 	return (matrix);
 }
