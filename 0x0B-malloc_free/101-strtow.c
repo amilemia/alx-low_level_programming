@@ -10,19 +10,19 @@
 
 int word_count(char *str)
 {
-    int word = 0, i, j = 0;
+	int word = 0, i, j = 0;
 
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        if (str[i] == ' ')
-            word = 0;
-        else if (word == 0)
-        {
-            word = 1;
-            j++;
-        }
-    }
-    return (j);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == ' ')
+			word = 0;
+		else if (word == 0)
+		{
+			word = 1;
+			j++;
+		}
+	}
+	return (j);
 }
 
 /**
@@ -34,13 +34,13 @@ int word_count(char *str)
 
 char **create_matrix(int words)
 {
-    char **matrix;
+	char **matrix;
 
-    matrix = malloc(sizeof(char *) * (words + 1));
-    if (matrix == NULL)
-        return (NULL);
+	matrix = malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
 
-    return (matrix);
+	return (matrix);
 }
 
 /**
@@ -53,49 +53,46 @@ char **create_matrix(int words)
 
 char **fill_matrix(char *str, char **matrix)
 {
-    char *tmp;
-    int i, k = 0, len = 0, c = 0, start = 0, end = 0;
+	int i, k = 0, len = 0, c = 0, start = 0, end = 0;
+	char *tmp;
 
-    while (str[len] != '\0')
-        len++;
+	while (str[len] != '\0')
+		len++;
 
-    for (i = 0; i <= len; i++)
-    {
-        if (str[i] == ' ' || str[i] == '\0')
-        {
-            if (c)
-            {
-                end = i;
-                tmp = malloc(sizeof(char) * (c + 1));
+	for (i = 0; i <= len; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\0')
+		{
+			if (c)
+			{
+				end = i;
+				tmp = malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+				{
+					for (k = k - 1; k >= 0; k--)
+						free(matrix[k]);
+					free(matrix);
+					return (NULL);
+				}
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k++] = tmp - c;
+				c = 0;
+			}
+		}
+		else if (c++ == 0)
+			start = i;
+	}
+	matrix[k] = NULL;
 
-                if (tmp == NULL)
-                {
-                    for (k = k - 1; k >= 0; k--)
-                        free(matrix[k]);
+	if (k == 0)
+	{
+		free(matrix);
+		return (NULL);
+	}
 
-                    free(matrix);
-                    return (NULL);
-                }
-
-                while (start < end)
-                    *tmp++ = str[start++];
-                *tmp = '\0';
-                matrix[k++] = tmp - c;
-                c = 0;
-            }
-        }
-        else if (c++ == 0)
-            start = i;
-    }
-    matrix[k] = NULL;
-
-    if (k == 0)
-    {
-        free(matrix);
-        return (NULL);
-    }
-
-    return (matrix);
+	return (matrix);
 }
 
 /**
@@ -107,19 +104,19 @@ char **fill_matrix(char *str, char **matrix)
 
 char **strtow(char *str)
 {
-    char **matrix;
-    int words;
+	char **matrix;
+	int words;
 
-    if (str == NULL || str[0] == '\0')
-        return (NULL);
+	if (str == NULL || str[0] == '\0')
+		return (NULL);
 
-    words = word_count(str);
-    matrix = create_matrix(words);
+	words = word_count(str);
+	matrix = create_matrix(words);
 
-    if (matrix == NULL)
-        return (NULL);
+	if (matrix == NULL)
+		return (NULL);
 
-    matrix = fill_matrix(str, matrix);
+	matrix = fill_matrix(str, matrix);
 
-    return (matrix);
+	return (matrix);
 }
