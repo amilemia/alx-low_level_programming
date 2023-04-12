@@ -47,12 +47,11 @@ char **create_matrix(int words)
  * fill_matrix - Fills the matrix with the words from the string
  * @str: Pointer to string
  * @matrix: Pointer to matrix
- * @words: Words in the string
  *
  * Return: Pointer to filled matrix
  */
 
-char **fill_matrix(char *str, char **matrix, int words)
+char **fill_matrix(char *str, char **matrix)
 {
     char *tmp;
     int i, k = 0, len = 0, c = 0, start = 0, end = 0;
@@ -120,7 +119,7 @@ char **strtow(char *str)
     if (matrix == NULL)
         return (NULL);
 
-    matrix = fill_matrix(str, matrix, words);
+    matrix = fill_matrix(str, matrix);
 
     return (matrix);
 }
