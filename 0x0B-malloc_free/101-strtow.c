@@ -46,6 +46,7 @@ char **strtow(char *str)
 	for (i = 0; i <= len; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
+		{
 			if (c)
 			{
 				end = i;
@@ -61,6 +62,7 @@ char **strtow(char *str)
 				matrix[k++] = tmp - c;
 				c = 0;
 			}
+		}
 		else if (c++ == 0)
 			start = i;
 	}
