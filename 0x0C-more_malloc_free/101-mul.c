@@ -80,7 +80,7 @@ int main(int ac, char **av)
 {
 	int *result;
 	int check = 0;
-	int i;
+	unsigned int i;
 
 	if (ac != 3)
 	{
