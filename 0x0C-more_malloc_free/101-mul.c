@@ -25,7 +25,8 @@ int is_digit(char *s)
  * @s1: The first number to multiply.
  * @s2: The second number to multiply.
  *
- * Return: A pointer to the result of the multiplication as an array of integers.
+ * Return: A pointer to the result of the
+ * multiplication as an array of integers.
  */
 
 int *multiply(char *s1, char *s2)
