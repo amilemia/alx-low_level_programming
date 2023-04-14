@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 /**
  * main - multiplies two positive numbers
@@ -32,7 +33,25 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	mul = atoi(argv[1]) * atoi(argv[2]);
+	if (atoi(argv[1]) == 0 || atoi(argv[2]) == 0)
+	{
+		printf("0\n");
+		return (0);
+	}
+
+	if (argv[1][0] == '0' || argv[2][0] == '0')
+	{
+		printf("0\n");
+		return (0);
+	}
+
+	if ((atol(argv[1]) * atol(argv[2])) > ULONG_MAX)
+	{
+		printf("Error\n");
+		return (98);
+	}
+
+	mul = atol(argv[1]) * atol(argv[2]);
 	printf("%lu\n", mul);
 
 	return (0);
