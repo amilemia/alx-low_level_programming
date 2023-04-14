@@ -1,97 +1,97 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * is_digit - checks if a character is a digit
- * @c: the character to check
- * Return: 1 if c is a digit, 0 otherwise
+ * is_digit - Checks if a string consists only of digits.
+ * @s: The string to check.
+ *
+ * Return: 1 if the string consists only of digits, 0 otherwise.
  */
-int is_digit(char c)
+
+int is_digit(char *s)
 {
-    return (c >= '0' && c <= '9');
+    int i;
+
+    for (i = 0; s[i]; i++)
+    {
+        if (!(s[i] >= '0' && s[i] <= '9'))
+            return (0);
+    }
+    return (1);
 }
 
 /**
- * mul - multiply two positive numbers
- * @num1: first number
- * @num2: second number
- * Return: pointer to array of integers containing result, NULL if error occurs
+ * main - Adds two numbers represented as strings.
+ * @ac: The number of command-line arguments.
+ * @av: An array of pointers to the command-line arguments.
+ *
+ * Return: 0 on success, 98 on failure.
  */
-int *mul(char *num1, char *num2)
-{
-    int i, j, res, carry;
-    int *mul;
-    int len1 = 0, len2 = 0;
 
-    while (num1[len1])
+int main(int ac, char **av)
+{
+    int size_1 = 0, size_2 = 0, *result;
+    char *s1, *s2;
+    int digit_1, digit_2, carry;
+    int check = 0;
+    int i, j;
+
+    if (ac != 3)
     {
-        if (!is_digit(num1[len1]))
-            return (NULL);
-        len1++;
+        printf("Error\n");
+        return(98);
     }
-    while (num2[len2])
+
+    if (!(is_digit(av[1]) && is_digit(av[2])))
     {
-        if (!is_digit(num2[len2]))
-            return (NULL);
-        len2++;
+        printf("Error\n");
+        return(98);
     }
-    mul = calloc(len1 + len2, sizeof(int));
-    if (!mul)
-        return (NULL);
-    for (i = len1 - 1; i >= 0; i--)
+
+    s1 = av[1];
+    s2 = av[2];
+
+    while (s1[size_1])
+        size_1++;
+    while (s2[size_2])
+        size_2++;
+
+    result = malloc(sizeof(int) * (size_1 + size_2 + 1));
+    if (result == 0)
+        return (0);
+
+    for (i = 0; i < size_1 + size_2 + 1; i++)
+        result[i] = 0;
+
+    for (i = size_1 - 1; i >= 0; i--)
     {
+        digit_1 = s1[i] - '0';
         carry = 0;
-        for (j = len2 - 1; j >= 0; j--)
+
+        for (j = size_2 - 1; j >= 0; j--)
         {
-            res = (num1[i] - '0') * (num2[j] - '0') + mul[i + j + 1] + carry;
-            mul[i + j + 1] = res % 10;
-            carry = res / 10;
+            digit_2 = s2[j] - '0';
+            carry += result[i + j + 1] + (digit_1 * digit_2);
+            result[i + j + 1] = carry % 10;
+            carry /= 10;
         }
-        mul[i + j + 1] = carry;
+
+        if (carry > 0)
+            result[i] = carry;
     }
-    return (mul);
-}
 
-/**
- * print_num - prints an array of integers as a number
- * @num: array of integers containing number to print
- * @len: length of array
- */
-void print_num(int *num, int len)
-{
-    int i = 0;
-
-    while (num[i] == 0 && i < len - 1)
-        i++;
-    for (; i < len; i++)
-        _putchar(num[i] + '0');
-    _putchar('\n');
-}
-
-/**
- * main - entry point
- * @argc: number of arguments
- * @argv: array of arguments
- * Return: 0 on success, 98 on error
- */
-int main(int argc, char *argv[])
-{
-    int *result;
-
-    if (argc != 3)
+    for (i = 0; i < size_1 + size_2; i++)
     {
-        _puts("Error");
-        return (98);
+        if (result[i])
+            check = 1;
+        if (check)
+            putchar(result[i] + '0');
     }
 
-    result = mul(argv[1], argv[2]);
-    if (!result)
-    {
-        _puts("Error");
-        return (98);
-    }
-
-    print_num(result, _strlen(result));
+    if (check == 0)
+        putchar('0');
+    putchar('\n');
     free(result);
+
     return (0);
 }
