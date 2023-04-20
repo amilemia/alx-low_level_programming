@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 /**
- * print_numbers - prints numbers followed by a new line
+ * print_numbers - Print numbers followed by a new line
  *
- * @separator: string to be printed between numbers
- * @n: number of integers passed to the function
- * @...: variable number of integer arguments to print
+ * @separator: String to be printed between numbers
+ * @n: Number of integers passed to the function
+ * @...: Variable number of integer arguments to print
  */
 
 void print_numbers(const char *separator, const unsigned int n, ...)
