@@ -3,3 +3,4 @@ main.c
 *.out
 
 .vscode/
+printk_local/
