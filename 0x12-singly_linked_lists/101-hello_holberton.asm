@@ -9,17 +9,16 @@ section .text
 main:
 	push rbp
 	mov rbp, rsp
-	
+
 	; call printf with hello and fmt as arguments
 	mov rdi, fmt
 	mov rsi, hello
 	xor rax, rax
 	call printf
-	
+
 	; return 0
 	mov eax, 0
-	
+
 	; clean up stack and exit
 	leave
 	ret
-	
