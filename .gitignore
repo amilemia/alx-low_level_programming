@@ -2,5 +2,4 @@ main.c
 *.exe
 *.out
 
-.vscode/
 printk_local/
