@@ -7,10 +7,11 @@
  * @message: The error message to print
  * @filename: The name of the file to use in the error message
  * @exit_code: The exit code to use when exiting the program
-*/
+ */
 
 void print_error(char *message, char *filename, int exit_code)
 {
+	exit_code = (exit_code == 0) ? -1 : exit_code;
 	if (filename == NULL)
 		dprintf(STDERR_FILENO, message, "");
 	else
@@ -23,7 +24,7 @@ void print_error(char *message, char *filename, int exit_code)
  * copy_file - Copy the content of one file to another
  * @file_from: The name of the file to copy from
  * @file_to: The name of the file to copy to
-*/
+ */
 
 void copy_file(char *file_from, char *file_to)
 {
@@ -49,9 +50,6 @@ void copy_file(char *file_from, char *file_to)
 			close(fd_from);
 			close(fd_to);
 			print_error("Error: Can't write to %s\n", file_to, 99);
-
-		if (bytes_written != bytes_read)
-			print_error("Error: Write to %s failed\n", file_to, 99);
 		}
 	}
 
@@ -64,8 +62,6 @@ void copy_file(char *file_from, char *file_to)
 
 	if (close(fd_from) == -1 || close(fd_to) == -1)
 		print_error("Error: Can't close fd\n", NULL, 100);
-
-	printf("File copied successfully.\n");
 }
 
 /**
@@ -74,7 +70,7 @@ void copy_file(char *file_from, char *file_to)
  * @argv: Array of pointers to the strings which are the arguments
  *
  * Return: 0 on success, 97, 98, 99 or 100 on failure
-*/
+ */
 
 int main(int argc, char **argv)
 {
