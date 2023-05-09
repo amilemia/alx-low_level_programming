@@ -11,7 +11,6 @@
 
 void print_error(char *message, char *filename, int exit_code)
 {
-	exit_code = (exit_code == 0) ? -1 : exit_code;
 	if (filename == NULL)
 		dprintf(STDERR_FILENO, message, "");
 	else
