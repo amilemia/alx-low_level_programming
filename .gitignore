@@ -28,3 +28,5 @@ extract_pass
 reverse_password.c
 
 printk_local/
+0x15-file_io/100-elf_header.c
+0x18-dynamic_libraries/libdynamic.c
